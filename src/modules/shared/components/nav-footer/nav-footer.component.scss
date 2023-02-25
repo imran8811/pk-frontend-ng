@@ -1,0 +1,28 @@
+.main-menu {
+	padding: 10px;
+	overflow: hidden;
+	display: block;
+}
+.main-menu ul {
+	list-style: none;
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: bold;
+}
+.main-menu ul li {
+	background: url(/assets/images/separator.png) no-repeat 0 50%;
+	vertical-align: middle;
+	display: inline-block;
+	padding: 0 0 0 20px;
+	margin: 0 0 0 20px;
+	text-transform:capitalize;
+}
+.main-menu ul li a { text-decoration: none; }
+.main-menu ul li:first-child {
+	background: none;
+	margin: 0;
+	padding: 0;
+}
+.menu-icon {
+	display: none;
+}

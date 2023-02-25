@@ -1,0 +1,29 @@
+.footer {
+	background: #333;
+	border-top: 3px solid #069;
+	padding-top: 25px;
+}
+.social-network {
+	text-align: center;
+	float: none;
+	width: auto;
+	margin: 0 0 20px;
+}
+.social-network li a  {
+	display: block;
+	background: url("/assets/images/fb-icon.png") no-repeat;
+	width: 32px;
+	height: 32px;
+	background-size: 100%;
+	text-indent: -9999px;
+	overflow: hidden;
+}
+.social-network li {
+	display: inline-block;
+	vertical-align: top;
+	float: none;
+  margin: 0 0 0 15px;
+}
+.social-network li.instagram a {background: url("/assets/images/instagram-icon.png") no-repeat; background-size: 100%;}
+.social-network li.twitter a {background: url("/assets/images/twitter-icon.png") no-repeat; background-size: 100%;}
+.social-network li.linkedin a {background: url("/assets/images/linkedin-icon.png") no-repeat; background-size: 100%;}

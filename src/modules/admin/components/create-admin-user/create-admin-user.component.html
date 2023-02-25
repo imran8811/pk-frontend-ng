@@ -1,0 +1,23 @@
+<div class="container">
+  <app-admin-header></app-admin-header>
+  <div class="col-lg-12 mt-5 mb-5">
+    <div class="row justify-content-center">
+      <h2 class="text-center mb-3">Create New Admin</h2>
+      <form [formGroup]="createAdminUserForm" (ngSubmit)="onSubmit()" class="col-lg-6">
+        <div class="mb-3">
+          <input type="text" placeholder="Name" class="form-control" formControlName="name" />
+        </div>
+        <div class="mb-3">
+          <input type="text" placeholder="Email" class="form-control" formControlName="email" />
+        </div>
+        <div class="mb-3">
+          <input type="password" placeholder="Password" class="form-control" formControlName="password" />
+        </div>
+        <div class="mb-3">
+          <button type="submit" class="btn btn-primary col-4">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

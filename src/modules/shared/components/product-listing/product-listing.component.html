@@ -1,0 +1,11 @@
+<div class="row">
+  <h2 class="text-center mb-5">
+    <span class="text-capitalize">{{category}}</span> Hot Selling <span class="text-capitalize">{{type | removeDash}}</span>
+  </h2>
+  <div class="col-lg-3 mb-3" *ngFor="let product of productListing">
+    <a [routerLink]="['/wholesale-shop/product-details/', product.article_no]" class="d-block mb-3" target="_blank" rel="noreferrer">
+      <img [src]="BASE_ROUTE+product.product_images[0].path+'/'+product.product_images[0].name" alt={{product.product_images.path}} class="img-thumbnail" />
+    </a>
+    <a [routerLink]="['/wholesale-shop/product-details/', product.article_no]" class="d-block text-center">Article# {{product.article_no}}</a>
+  </div>
+</div>

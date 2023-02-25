@@ -1,0 +1,67 @@
+<div class="container main-wrapper">
+  <app-header></app-header>
+  <div class="mb-5">
+    <div class="row" *ngFor="let product of productDetails">
+      <div class="col-lg-6">
+        <ng-image-slider [images]="imageObject" #nav [imageSize]="{width:'100%', height:'100%', space:0}"></ng-image-slider>
+      </div>
+      <div class="col-lg-6 ps-5">
+        <ul>
+          <li class="row mb-1">
+            <span class="col-3">Article No.</span>
+            <span class="col-9">{{product.article_no}}</span>
+          </li>
+          <li class="row">
+            <span class="col-3">Fabric Details</span>
+            <span class="col-9">{{product.fabric_weight + ' Ounce - ' + product.fabric}}</span>
+          </li>
+          <li class="row mb-1">
+            <span class="col-3">Colors</span>
+            <span class="col-9">{{product.colors}}</span>
+          </li>
+          <li class="row mb-1">
+            <span class="col-3">Waist Sizes</span>
+            <span class="col-9">{{product.sizes}}</span>
+          </li>
+          <li class="row mb-1">
+            <span class="col-3">Wash Type</span>
+            <span class="col-9">{{product.wash_type}}</span>
+          </li>
+          <li class="row mb-1">
+            <span class="col-3">Category</span>
+            <span class="col-9 text-capitalize">{{product.category}}</span>
+          </li>
+          <li class="row mb-1">
+            <span class="col-3">Type</span>
+            <span class="col-9 text-capitalize">{{product.type}}</span>
+          </li>
+          <li class="row mb-1">
+            <span class="col-3">Shipping</span>
+            <span class="col-9">By Air, Sea, Courier etc</span>
+          </li>
+          <li class="row mb-1">
+            <span class="col-3">Delivery</span>
+            <span class="col-9">30 days</span>
+          </li>
+          <li class="row mb-1">
+            <span class="col-3">MOQ</span>
+            <span class="col-9">{{product.moq}}</span>
+          </li>
+          <li class="row mb-1">
+            <span class="col-3">Price</span>
+            <span class="col-9">${{product.price}}</span>
+          </li>
+          <li class="row mb-1">
+            <span class="col-3">Payment Terms</span>
+            <span class="col-9">60% Advance 40% before shipping</span>
+          </li>
+        </ul>
+        <div class="mb-3 text-end">
+          <button type="button" class="btn btn-primary">Order Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="push"></div>
+</div>
+<app-footer></app-footer>

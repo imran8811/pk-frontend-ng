@@ -1,0 +1,54 @@
+<div className="col-lg-2">
+  <h2>Filters</h2>
+  <form className="product-filters">
+    <div className="mb-3">
+      <label htmlFor="category">Category</label>
+      <select className="form-control" (change)="setFiltersData('category')">
+        <option value="men">Men</option>
+        <option value="women">Women</option>
+        <option value="boys">Boys</option>
+        <option value="gitls">Girls</option>
+      </select>
+    </div>
+    <div className="mb-3">
+      <label htmlFor="type">Type</label>
+      <select className="form-control" (change)="setFiltersData('type')">
+        <option value="jeans-pant">Jeans Pant</option>
+        <option value="chino-pant">Chino Pant</option>
+        <option value="cargo-trouser">Cargo Trouser</option>
+      </select>
+    </div>
+    <div className="mb-3">
+      <label htmlFor="fitting">Fitting</label>
+      <select className="form-control" (change)="setFiltersData('fitting')">
+        <option value="slim">Slim</option>
+        <option value="straight">Straight</option>
+        <option value="skinny">Skinny</option>
+        <option value="ankle">Ankle</option>
+      </select>
+    </div>
+    <div className="mb-3">
+      <label htmlFor="length">Length</label>
+      <select className="form-control" (change)="setFiltersData('length')">
+        <option value="long">Long</option>
+        <option value="short">Short</option>
+      </select>
+    </div>
+    <div className="mb-3">
+      <label htmlFor="colors">Colors</label>
+      <select className="form-control" (change)="setFiltersData('colors')">
+        <option value="blue">Blue</option>
+        <option value="mid-blue">Mid Blue</option>
+        <option value="navy-blue">Navy Blue</option>
+        <option value="black">Black</option>
+        <option value="jet-black">Jet Black</option>
+      </select>
+    </div>
+    <div className="mb-3">
+      <h5>Washes</h5>
+      <label htmlFor="destroyed"><input type="checkbox" id="destroyed" /> Destroyed</label>
+      <label htmlFor="ripped"><input type="checkbox" id="ripped" /> Ripped</label>
+      <label htmlFor="silicone"><input type="checkbox" id="silicone" /> Silicone</label>
+    </div>
+  </form>
+</div>

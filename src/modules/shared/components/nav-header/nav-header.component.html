@@ -1,0 +1,21 @@
+<nav class="main-menu mobile">
+  <i class="menu-icon" (click)="toggleMenu()">Menu</i>
+  <ul *ngIf="mainMenu">
+    <li><a routerLink="/wholesale-shop">Wholesale Shop</a></li>
+    <li><a routerLink="/about">About us</a></li>
+    <li><a routerLink="/factory">Factory</a></li>
+    <li><a routerLink="/certifications">Certifications</a></li>
+    <li><a routerLink="/blog">Blog</a></li>
+    <li><a routerLink="/contact">Contact us</a></li>
+  </ul>
+</nav>
+<nav class="main-menu desktop">
+  <ul>
+    <li><a routerLink="/wholesale-shop">Wholesale Shop</a></li>
+    <li><a routerLink="/about">About us</a></li>
+    <li><a routerLink="/factory">Factory</a></li>
+    <li><a routerLink="/certifications">Certifications</a></li>
+    <li><a routerLink="/blog">Blog</a></li>
+    <li><a routerLink="/contact">Contact us</a></li>
+  </ul>
+</nav>

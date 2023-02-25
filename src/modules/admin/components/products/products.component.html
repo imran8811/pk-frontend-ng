@@ -1,0 +1,35 @@
+<div class="container">
+  <app-admin-header></app-admin-header>
+  <div class="col-lg-12 mt-5 mb-5">
+    <div class="row">
+      <h2 class="text-center mb-3">Products</h2>
+      <div class="col-3" *ngFor="let product of products | sortBy : 'desc'">
+        <img [src]="BASE_PATH + product.product_images[0]?.path +'/'+ product.product_images[0]?.name" alt="{{product.product_images[0]?.name}}" class="img-thumbnail">
+        <p class="mb-0">
+          <span>{{product.colors}} </span>
+          <span class="text-capitalize">{{product.category}} </span>
+          <span class="text-capitalize">{{product.type | removeDash}} -</span>
+          <span>{{product.article_no}}</span>
+        </p>
+        <ul class="list-group">
+          <li class="list-item">
+            <span>{{product.fabric}}</span>
+          </li>
+          <li class="text-capitalize">{{product.fitting}}</li>
+          <li>
+            <span>{{product.fabric_weight}} OZ -</span>
+            <span>{{product.moq}} Pcs -</span>
+            <span>$ {{product.price}}</span>
+          </li>
+        </ul>
+        <div class="mb-3 mt-3">
+          <a type="button" class="btn btn-primary" [routerLink]="['/admin/edit-product', product.article_no]">Edit</a>
+          <button type="button" class="btn btn-danger" (click)="deleteProduct(product.article_no)">Delete</button>
+        </div>
+      </div>
+      <div class="mt-5 mb-5" *ngIf="products?.length === 0">
+        <h3 class="text-danger">No Product Found</h3>
+      </div>
+    </div>
+  </div>
+</div>

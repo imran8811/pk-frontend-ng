@@ -1,0 +1,25 @@
+.star-rating li {
+  float: left;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/images/star.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.inner-rating p {
+  margin-bottom: 10px;
+}
+.reviewer-info {
+  padding: 10px 0 0;
+  width: 100%;
+  overflow: hidden;
+}
+.inner-rating.inner-manufacture {
+  padding: 20px;
+  position: relative;
+  min-height: 250px;
+}
+.rating-wrap {
+  position: absolute;
+  bottom: 0;
+}

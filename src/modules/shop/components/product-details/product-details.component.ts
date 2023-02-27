@@ -31,7 +31,7 @@ export class ProductDetailsComponent implements OnInit {
       for(var i=0; i < this.productImages.length; i++){
         this.imageObject.push(
           {
-            image: basePath+'/'+this.productImages[i].path+'/'+this.productImages[i].name,
+            path: basePath+'/'+this.productImages[i].path+'/'+this.productImages[i].name,
             thumbImage: basePath+'/'+this.productImages[i].path+'/'+this.productImages[i].name,
             alt: this.productImages[i].path+'/'+this.productImages[i].name,
           }

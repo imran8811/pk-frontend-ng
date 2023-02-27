@@ -80,6 +80,10 @@ a { text-decoration: none; }
   left: 48%;
   top: 30%;
 }
+.carousel-dots .carousel-dot {
+  background-color: #2d639e;
+  border: 2px solid #2d639e !important;
+}
 @media screen and (max-width: 768px){
   .loader { left: 35%; }
 }

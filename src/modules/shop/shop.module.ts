@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShopRoutingModule } from './shop-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
 import {
   ProductDetailsComponent,
@@ -23,7 +23,7 @@ import {
     ReactiveFormsModule,
     ShopRoutingModule,
     SharedModule,
-    IvyCarouselModule
+    NgbCarouselModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { IProduct } from 'src/models/product.model';
 
 import { ProductService, GlobalService  } from 'src/services';
-import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { basePath } from 'src/endpoints'
 

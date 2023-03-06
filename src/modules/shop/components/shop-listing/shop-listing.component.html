@@ -2,7 +2,7 @@
   <app-header></app-header>
   <div class="row product-listing">
     <h2 class="text-center mb-2">
-      <span class="text-capitalize">{{category}}</span> Hot Selling <span class="text-capitalize">{{type}}</span>
+      <span class="text-capitalize">{{category}}</span> Hot Selling <span class="text-capitalize">{{type | removeDash}}</span>
     </h2>
     <div class="product-filters mb-4">
       <form [formGroup]="shopFilters" class="row">
@@ -36,8 +36,8 @@
       </a>
       <div class="product-data">
         <a [routerLink]="['/wholesale-shop/product-details/', product.article_no]" class="d-block text-center">
-          <span class="text-capitalize">{{product.category}} </span>
-          <span class="text-capitalize">{{product.type}} </span>
+          <span class="text-capitalize">{{product.category | removeDash}} </span>
+          <span class="text-capitalize">{{product.type | removeDash}} </span>
           <span class="text-capitalize">{{product.color}} </span>
           <span class="text-capitalize">{{product.fitting}} Fit </span>
           <span class="text-capitalize">#{{product.article_no}}</span>

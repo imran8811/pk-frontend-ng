@@ -1,0 +1,18 @@
+.img-slider-wrapper {
+    background-color: #ccc;
+}
+.img-slider-wrapper img {
+    display: block;
+    margin: 0 auto;
+    max-width: 50%;
+}
+.product-details {
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .img-slider-wrapper img {
+        max-width: 100%;
+    }
+}

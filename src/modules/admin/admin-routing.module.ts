@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'edit-product/:id', component: EditProductComponent, canActivate: [AdminAuthGuard] },
   { path: 'products', component: AdminProductsComponent, canActivate: [AdminAuthGuard] },
   { path: 'create-admin-user', component: CreateAdminUserComponent, canActivate: [AdminAuthGuard] },
+  { path: '', redirectTo: '/admin/login', pathMatch: 'full' },
 ];
 
 @NgModule({

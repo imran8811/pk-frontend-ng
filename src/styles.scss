@@ -24,7 +24,7 @@ ul, li {
   padding: 0;
   list-style: none;
 } 
-a { text-decoration: none; }
+a { text-decoration: none !important; }
 .section-heading {
   display: inline-block;
 	background: #2d639e;
@@ -62,15 +62,9 @@ a { text-decoration: none; }
 	color: #2d639e;
 	margin: 20px 0;
 }
-.main-wrapper {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -200px;
-}
-.footer, .push {
-  height: 200px;
-}
+// .footer, .push {
+//   height: 200px;
+// }
 .loader {
   width: 150px;
   height: 150px;
@@ -87,3 +81,6 @@ a { text-decoration: none; }
 @media screen and (max-width: 768px){
   .loader { left: 35%; }
 }
+
+/* Importing Bootstrap SCSS file. */
+// @import 'bootstrap/scss/bootstrap';

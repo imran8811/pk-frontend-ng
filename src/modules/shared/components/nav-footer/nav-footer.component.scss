@@ -26,3 +26,15 @@
 .menu-icon {
 	display: none;
 }
+
+@media screen and (max-width: 767px) {
+	.main-menu {
+		border-bottom: 1px solid #f8f8f8;
+	}
+	.main-menu ul li, .main-menu ul li:first-child {
+		display: block;
+		background: none;
+		padding: 0;
+		margin: 0 0 10px;
+	}
+}

@@ -4,7 +4,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ProductService } from 'src/services';
 import { IProduct } from 'src/models/product.model';
 
-import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

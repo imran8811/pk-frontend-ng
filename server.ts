@@ -34,10 +34,10 @@ export function app(): express.Express {
 
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
-    // var host = req.header("host");
-    // if (!host.match(/^www\..*/i)) {
-    //   res.redirect(301, "https://www." + host + req.url);
-    // }
+    var host = req.header("host");
+    if (!host.match(/^www\..*/i)) {
+      res.redirect(301, "https://www." + host + req.url);
+    }
     if(req.originalUrl == '/jeans-pants/wholesale-jeans-bulk'){res.redirect(301, '/posts/wholesale-jeans-bulk')}
     if(req.originalUrl == '/jeans-for-men'){res.redirect(301, '/wholesale-shop')}
     if(req.originalUrl == '/jeans-pants/wholesale-jeans-suppliers'){res.redirect(301, '/posts/wholesale-jeans-suppliers')}

@@ -67,12 +67,13 @@ a { text-decoration: none !important; }
 // }
 .loader {
   width: 150px;
-  height: 150px;
+  height: 400px;
   background: url(assets/images/loader.gif) no-repeat 100%;
-  position: absolute;
-  z-index: 9999;
-  left: 48%;
-  top: 30%;
+  margin: 0 auto;
+  // position: absolute;
+  // z-index: 9999;
+  // left: 48%;
+  // top: 30%;
 }
 .carousel-dots .carousel-dot {
   background-color: #2d639e;

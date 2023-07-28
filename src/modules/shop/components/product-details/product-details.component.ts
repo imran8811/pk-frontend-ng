@@ -17,6 +17,7 @@ export class ProductDetailsComponent implements OnInit {
   productId: string = this.route.snapshot.paramMap.get('id');
   productImages = [];
   imageObject = [];
+  loader:boolean = false;
   
   constructor(
     private productService: ProductService, 
@@ -26,12 +27,14 @@ export class ProductDetailsComponent implements OnInit {
   ) { }
   
   ngOnInit(): void {
+    this.loader = true;
     this.getProductDetails()
   }
 
   getProductDetails = () => {
     const res = this.productService.getProductDetails(this.productId).subscribe(data => {
       this.productDetails = data;
+      this.loader = false;
       this.title.setTitle(`${data[0].article_no}-${data[0].category.toUpperCase()}-${data[0].fitting.toUpperCase()} Fit-${this.removeDash.transform(data[0].type).toUpperCase()}-${data[0].colors}`)
       this.productImages = data[0].product_images
       for(var i=0; i < this.productImages.length; i++){

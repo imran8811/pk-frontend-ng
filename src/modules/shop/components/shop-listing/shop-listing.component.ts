@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/models';
 import { ProductService } from 'src/services';
 import { Title, Meta } from '@angular/platform-browser';
+import { GLOBAL_CONSTANTS } from 'src/constants/global.constants';
 
 import { basePath } from 'src/endpoints';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -18,6 +19,26 @@ export class ShopListingComponent implements OnInit {
   BASE_PATH = basePath;
   loader:boolean = false;
   shopFilters: FormGroup;
+  quantityPerCategory = {
+    men : 0,
+    women : 0,
+    boys : 0,
+    girls : 0,
+    jeansPants : 0,
+    chinoPants : 0,
+    cargoTrousers : 0,
+    slim: 0,
+    straght: 0,
+    skinny: 0,
+    ankle: 0,
+    skyBlue: 0,
+    midBlue: 0,
+    navyBlue: 0,
+    black: 0,
+    destroyed: 0,
+    ripped: 0,
+    silicone: 0
+  }
 
   constructor(private fb: FormBuilder, private productService: ProductService, private title: Title, private meta: Meta) { }
 
@@ -36,9 +57,11 @@ export class ShopListingComponent implements OnInit {
   }
 
   getProductsListing = () => {
-    const res = this.productService.getAllProducts().subscribe(data => {
+    const res = this.productService.getProductByDeptCategory(GLOBAL_CONSTANTS.DEFAULT_DEPT, GLOBAL_CONSTANTS.DEFAULt_CATEGORY).subscribe(data => {
+      console.log(data);
       this.products = data
       this.loader = false
+
     });
   } 
 

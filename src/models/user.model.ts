@@ -2,6 +2,6 @@ export interface IUser {
   created_at : Date,
   email : string,
   id : number,
-  name : string,
+  fullName : string,
   updated_at : Date
 }

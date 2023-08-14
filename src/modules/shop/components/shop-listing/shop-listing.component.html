@@ -2,51 +2,30 @@
   <app-header></app-header>
   <div class="row product-listing">
     <h2 class="text-center mb-2">
-      <span class="text-capitalize">{{category}}</span> Hot Selling <span class="text-capitalize">{{type | removeDash}}</span>
+      <span class="text-capitalize">{{category}}</span>&nbsp; <span class="text-capitalize">{{type | removeDash}}</span>
     </h2>
-    <!-- <div class="product-filters mb-4">
-      <form [formGroup]="shopFilters" class="row">
-        <div class="col-lg-3">
-          <label for="category">Category:</label>
-          <select class="select-input" id="category" formControlName="category">
-            <option value="men">Men</option>
-            <option value="women">Women</option>
-            <option value="boys">Boys</option>
-            <option value="girls">Girls</option>
-          </select>
-        </div>
-        <div class="col-lg-3">
-          <label for="type">Type:</label>
-          <select class="select-input" id="type" formControlName="type">
-            <option value="jeans-pants">Jeans Pants</option>
-            <option value="jeans-jackets">Jeans Jackets</option>
-            <option value="jeans-shorts">Jeans Shorts</option>
-            <option value="cargo-trousers">Cargo Trousers</option>
-            <option value="cargo-shorts">Cargo Shorts</option>
-          </select>
-        </div>
-      </form>
-    </div> -->
     <div class="row">
-      <div class="col-3">
+      <div class="col-2">
         <app-product-filters></app-product-filters>
       </div>
-      <div class="col-9">
-        <div class="col-lg-3 mb-5" *ngFor="let product of products | sortBy : 'desc'">
-          <a [routerLink]="['/wholesale-shop/product-details/', product.article_no]" class="d-block mb-3" target="_blank" rel="noreferrer">
-            <img 
-              src="{{BASE_PATH+product.product_images[0]?.path+'/'+product.product_images[0]?.name}}"
-              alt={{product.product_images[0]?.path}}
-              height="370"/>
-          </a>
-          <div class="product-data">
-            <a [routerLink]="['/wholesale-shop/product-details/', product.article_no]" class="d-block text-center">
-              <span class="text-capitalize">{{product.category | removeDash}} </span>
-              <span class="text-capitalize">{{product.type | removeDash}} </span>
-              <span class="text-capitalize">{{product.color}} </span>
-              <span class="text-capitalize">{{product.fitting}} Fit </span>
-              <span class="text-capitalize">#{{product.article_no}}</span>
-            </a>
+      <div class="col-10">
+        <div class="row">
+          <div class="col-lg-3 mb-5" *ngFor="let product of products | sortBy : 'desc'">
+            <!-- <a [routerLink]="['/wholesale-shop/product-details/', product.articleNo]" class="d-block mb-3" target="_blank" rel="noreferrer">
+              <img 
+                src="{{BASE_PATH+product.product_images[0]?.path+'/'+product.product_images[0]?.name}}"
+                alt={{product.product_images[0]?.path}}
+                height="370"/>
+            </a> -->
+            <div class="product-data">
+              <a [routerLink]="['/wholesale-shop/product-details/', product.article_no]" class="d-block text-center">
+                <span class="text-capitalize">{{product.category | removeDash}} </span>
+                <span class="text-capitalize">{{product.type | removeDash}} </span>
+                <span class="text-capitalize">{{product.color}} </span>
+                <span class="text-capitalize">{{product.fitting}} Fit </span>
+                <span class="text-capitalize">#{{product.articleNo}}</span>
+              </a>
+            </div>
           </div>
         </div>
         <div class="loader" *ngIf="loader"></div>

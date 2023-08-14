@@ -31,7 +31,7 @@ export class AdminHeaderComponent implements OnInit {
       if(res.type === 'success'){
         const userData = {
           'token' : res.token,
-          'name' : res.user.name
+          'name' : res.data.fullName
         }
         localStorage.setItem('userData', JSON.stringify(userData))
         this.router.navigate(['/admin/add-product'])

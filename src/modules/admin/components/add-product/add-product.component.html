@@ -1,23 +1,17 @@
 <div class="container">
   <app-admin-header></app-admin-header>
-  <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
     <div class='col-lg-12 mt-5 mb-5'>
       <div class='row justify-content-center'>
         <h2 class='text-center mb-3'>Add Product</h2>
         <div class='row mb-3'>
           <div class='col-4 mb-3'>
             <label for='article-no'>Article No.</label>
-            <input class='form-control' id="article-no" formControlName="article_no" />
-          </div>
-          <div class='col-lg-4'>
-            <label for='product-files'>Product Files</label>
-            <input type="file" id='product-files' (change)="fileOnChange($event)" class="form-control" multiple />
-            <p class="text-success" *ngIf="imageUploadedSuccess">Image Uploaded Successfully</p>
-            <p class="text-danger" *ngIf="imageUploadedError">Image Uploading Error</p>
+            <input class='form-control' id="article-no" formControlName="articleNo" />
           </div>
           <div class='col-4'>
-            <label for='category'>Category</label>
-            <select class="form-control" formControlName="category">
+            <label for='category'>Dept.</label>
+            <select class="select-input" formControlName="dept">
               <option value='men'>Men</option>
               <option value='women'>Women</option>
               <option value='boys'>Boys</option>
@@ -25,19 +19,12 @@
             </select>
           </div>
           <div class='col-4 mb-3'>
-            <label for='type'>Product Type</label>
-            <select class="form-control" formControlName="type">
+            <label for='type'>Category</label>
+            <select class="select-input" id="type" formControlName="category">
               <option value='jeans-pant'>Jeans Pant</option>
               <option value='chino-pant'>Chino Pant</option>
               <option value='cargo-trouser'>Cargo Trouser</option>
               <option value='biker-jeans'>Biker Jeans</option>
-            </select>
-          </div>
-          <div class='col-4'>
-            <label for='length'>Product Length</label>
-            <select class="form-control" formControlName="length">
-              <option value='long'>Long</option>
-              <option value='short'>Short</option>
             </select>
           </div>
           <div class='col-4 mb-3'>
@@ -50,7 +37,7 @@
           </div>
           <div class='col-4 mb-3'>
             <label for='fitting'>Fitting</label>
-            <select id='fitting' class="form-control" formControlName="fitting">
+            <select class="select-input" id='fitting' formControlName="fitting">
               <option value='slim'>Slim</option>
               <option value='straight'>Straight</option>
               <option value='skinny'>Skinny</option>
@@ -64,25 +51,31 @@
           </div>
           <div class='col-4 mb-3'>
             <label for='fabric-weight'>Fabric Weight</label>
-            <input type="text" id='fabric-weight' class='form-control' formControlName="fabric_weight" />
+            <input type="text" id='fabric-weight' class='form-control' formControlName="fabricWeight" />
           </div>
           <div class='col-4'>
             <label for='wash-type'>Wash Type</label>
-            <input type="text" id='wash-type' class='form-control' formControlName="wash_type" />
+            <input type="text" id='wash-type' class='form-control' formControlName="washType" />
           </div>
           <div class='col-4'>
             <label for='moq'>MOQ</label>
             <input type="text" id='moq' class='form-control' formControlName="moq" />
           </div>
           <div class='col-4 mb-3'>
-            <label for='colors'>Colors</label>
-            <input type="text" id='colors' class='form-control' formControlName="colors" />
+            <label for='colors'>Color</label>
+            <input type="text" id='colors' class='form-control' formControlName="color" />
           </div>
           <div class='col-4'>
             <label for='price'>Price</label>
             <input type="text" id='price' class='form-control' formControlName="price" />
           </div>
-          <div class='col-4 pt-4'>
+          <div class='col-lg-4'>
+            <label for='product-files'>Product Files</label>
+            <input type="file" id='product-files' (change)="fileOnChange($event)" class="form-control" multiple />
+            <p class="text-success" *ngIf="imageUploadedSuccess">Image Uploaded Successfully</p>
+            <p class="text-danger" *ngIf="imageUploadedError">Image Uploading Error</p>
+          </div>
+          <div class='col-12 pt-4'>
             <button type="submit" class='btn btn-primary col-4'>Submit</button>
           </div>
         </div>

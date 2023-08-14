@@ -1,54 +1,103 @@
-<div className="col-lg-2">
-  <h2>Filters</h2>
-  <form className="product-filters">
-    <div className="mb-3">
-      <label htmlFor="category">Category</label>
-      <select className="form-control" (change)="setFiltersData('category')">
-        <option value="men">Men</option>
-        <option value="women">Women</option>
-        <option value="boys">Boys</option>
-        <option value="gitls">Girls</option>
-      </select>
+  <form class="product-filters">
+    <div class="mb-3">
+      <p class="mb-2 text-bold">Category</p>
+      <ul>
+        <li class="row border-bottom-grey">
+          <a href="#" class="col-10" (click)="setFiltersData('category', 'all')">All</a>
+          <span class="col-2">0</span>
+        </li>
+        <li class="row border-bottom-grey mt-2">
+          <a href="#" class="col-10" (click)="setFiltersData('category', 'men')">Men</a>
+          <span class="col-2">0</span>
+        </li>
+        <li class="row border-bottom-grey mt-2">
+          <a href="#" class="col-10" (click)="setFiltersData('category', 'women')">Women</a>
+          <span class="col-2">0</span>
+        </li>
+        <li class="row border-bottom-grey mt-2">
+          <a href="#" class="col-10" (click)="setFiltersData('category', 'boys')">Boys</a>
+          <span class="col-2">0</span>
+        </li>
+        <li class="row border-bottom-grey mt-2">
+          <a href="#" class="col-10" (click)="setFiltersData('category', 'girls')">Girls</a>
+          <span class="col-2">0</span>
+        </li>
+      </ul>
     </div>
-    <div className="mb-3">
-      <label htmlFor="type">Type</label>
-      <select className="form-control" (change)="setFiltersData('type')">
-        <option value="jeans-pant">Jeans Pant</option>
-        <option value="chino-pant">Chino Pant</option>
-        <option value="cargo-trouser">Cargo Trouser</option>
-      </select>
+    <div class="mb-3">
+      <p class="mb-2">Type</p>
+      <ul>
+        <li class="row border-bottom-grey">
+          <a href="#" class="col-10" (click)="setFiltersData('type', 'jeans-pant')">Jeans Pants</a>
+          <span class="col-2">0</span>
+        </li>
+        <li class="row border-bottom-grey mt-2">
+          <a href="#" class="col-10" (click)="setFiltersData('type', 'chino-pant')">Chino Pants</a>
+          <span class="col-2">0</span>
+        </li>
+        <li class="row border-bottom-grey mt-2">
+          <a href="#" class="col-10" (click)="setFiltersData('type', 'cargo-trouser')">Cargo Trousers</a>
+          <span class="col-2">0</span>
+        </li>
+      </ul>
     </div>
-    <div className="mb-3">
-      <label htmlFor="fitting">Fitting</label>
-      <select className="form-control" (change)="setFiltersData('fitting')">
-        <option value="slim">Slim</option>
-        <option value="straight">Straight</option>
-        <option value="skinny">Skinny</option>
-        <option value="ankle">Ankle</option>
-      </select>
+    <div class="mb-3">
+      <p class="mb-2">Fitting</p>
+      <ul>
+        <li class="row border-bottom-grey">
+          <a href="#" class="col-10" (click)="setFiltersData('type', 'slim')">Slim</a>
+          <span class="col-2">0</span>
+        </li>
+        <li class="row border-bottom-grey mt-2">
+          <a href="#" class="col-10" (click)="setFiltersData('type', 'straight')">Straight</a>
+          <span class="col-2">0</span>
+        </li>
+        <li class="row border-bottom-grey mt-2">
+          <a href="#" class="col-10" (click)="setFiltersData('type', 'skinny')">Skinny</a>
+          <span class="col-2">0</span>
+        </li>
+        <li class="row border-bottom-grey mt-2">
+          <a href="#" class="col-10" (click)="setFiltersData('type', 'ankle')">Ankle</a>
+          <span class="col-2">0</span>
+        </li>
+      </ul>
     </div>
-    <div className="mb-3">
-      <label htmlFor="length">Length</label>
-      <select className="form-control" (change)="setFiltersData('length')">
-        <option value="long">Long</option>
-        <option value="short">Short</option>
-      </select>
+    <div class="mb-3">
+      <p class="mb-2">Colors</p>
+      <ul>
+        <li class="row border-bottom-grey">
+          <a href="#" class="col-10" (click)="setFiltersData('color', 'sky-blue')">Sky Blue</a>
+          <span class="col-2">0</span>
+        </li>
+        <li class="row border-bottom-grey mt-2">
+          <a href="#" class="col-10" (click)="setFiltersData('color', 'mid-blue')">Mid Blue</a>
+          <span class="col-2">0</span>
+        </li>
+        <li class="row border-bottom-grey mt-2">
+          <a href="#" class="col-10" (click)="setFiltersData('color', 'navy-blue')">Navy Blue</a>
+          <span class="col-2">0</span>
+        </li>
+        <li class="row border-bottom-grey mt-2">
+          <a href="#" class="col-10" (click)="setFiltersData('color', 'black')">Black</a>
+          <span class="col-2">0</span>
+        </li>
+      </ul>
     </div>
-    <div className="mb-3">
-      <label htmlFor="colors">Colors</label>
-      <select className="form-control" (change)="setFiltersData('colors')">
-        <option value="blue">Blue</option>
-        <option value="mid-blue">Mid Blue</option>
-        <option value="navy-blue">Navy Blue</option>
-        <option value="black">Black</option>
-        <option value="jet-black">Jet Black</option>
-      </select>
-    </div>
-    <div className="mb-3">
-      <h5>Washes</h5>
-      <label htmlFor="destroyed"><input type="checkbox" id="destroyed" /> Destroyed</label>
-      <label htmlFor="ripped"><input type="checkbox" id="ripped" /> Ripped</label>
-      <label htmlFor="silicone"><input type="checkbox" id="silicone" /> Silicone</label>
+    <div class="mb-3">
+      <p class="mb-2">Washes</p>
+      <ul>
+        <li class="row border-bottom-grey">
+          <a href="#" class="col-10" (click)="setFiltersData('wash', 'sky-blue')">Destroyed</a>
+          <span class="col-2">0</span>
+        </li>
+        <li class="row border-bottom-grey mt-2">
+          <a href="#" class="col-10" (click)="setFiltersData('color', 'mid-blue')">Ripped</a>
+          <span class="col-2">0</span>
+        </li>
+        <li class="row border-bottom-grey mt-2">
+          <a href="#" class="col-10" (click)="setFiltersData('color', 'navy-blue')">Silicone</a>
+          <span class="col-2">0</span>
+        </li>
+      </ul>
     </div>
   </form>
-</div>

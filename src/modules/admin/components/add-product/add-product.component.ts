@@ -20,22 +20,22 @@ export class AddProductComponent implements OnInit {
   imageUploadedError:boolean = false;
 
   imageUploadForm = this.fb.group({
-    'article_no' : ['', Validators.required],
-    'product_images' : ['', Validators.required]
+    'articleNo' : ['', Validators.required],
+    'productImages' : ['', Validators.required]
   })
 
   addProductForm = this.fb.group({
     'sizes' : ['', Validators.required],
-    'colors' : ['', Validators.required],
+    'color' : ['', Validators.required],
     'fitting' : ['', Validators.required],
     'fabric' : ['', Validators.required],
-    'fabric_weight' : ['', Validators.required],
-    'wash_type' : ['', Validators.required],
+    'fabricWeight' : ['', Validators.required],
+    'washType' : ['', Validators.required],
     'moq' : ['', Validators.required],
     'price' : ['', Validators.required],
-    'article_no' : ['', Validators.required],
+    'articleNo' : ['', Validators.required],
     'category' : ['', Validators.required],
-    'type' : ['', Validators.required],
+    'dept' : ['', Validators.required],
     'length' : ['', Validators.required],
     'slug' : ['', Validators.required],
   })
@@ -53,9 +53,9 @@ export class AddProductComponent implements OnInit {
       const formData = new FormData()
       const files = e.target.files;
       for (let i = 0; i < files.length; i++) {
-        formData.append(`product_images[${i}]`, files[i])
+        formData.append(`productImages[${i}]`, files[i])
       }
-      formData.append('article_no', this.form['article_no'].value)
+      formData.append('articleNo', this.form['articleNo'].value)
       this.productService.productImageUpload(formData).subscribe((data) => {
         console.log(data);
         if(data.type === 'success'){
@@ -69,16 +69,16 @@ export class AddProductComponent implements OnInit {
   onSubmit = () => {
     const data = {
       sizes: this.addProductForm.get('sizes').value,
-      colors: this.addProductForm.get('colors').value,
+      color: this.addProductForm.get('color').value,
       fitting: this.addProductForm.get('fitting').value,
       fabric: this.addProductForm.get('fabric').value,
-      fabric_weight: this.addProductForm.get('fabric_weight').value,
-      wash_type: this.addProductForm.get('wash_type').value,
+      fabricWeight: this.addProductForm.get('fabricWeight').value,
+      washType: this.addProductForm.get('washType').value,
       price: this.addProductForm.get('price').value,
       moq: this.addProductForm.get('moq').value,
-      article_no: this.addProductForm.get('article_no').value,
+      articleNo: this.addProductForm.get('articleNo').value,
       category: this.addProductForm.get('category').value,
-      type: this.addProductForm.get('type').value,
+      dept: this.addProductForm.get('dept').value,
       length: this.addProductForm.get('length').value,
       slug: this.addProductForm.get('slug').value,
     }

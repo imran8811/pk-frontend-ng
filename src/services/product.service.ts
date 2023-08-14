@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { throwError, catchError, tap } from 'rxjs';
 import { IProduct } from 'src/models/product.model';
 
-import { ADD_PRODUCT, DELETE_PRODUCT, GET_PRODUCTS, GET_PRODUCTS_LISTING, GET_PRODUCT_DETAILS, IMAGE_UPLOAD, UPDATE_PRODUCT } from '../endpoints';
+import { ADD_PRODUCT, DELETE_PRODUCT, GET_PRODUCT, GET_PRODUCTS_LISTING, GET_PRODUCT_DETAILS, IMAGE_UPLOAD, UPDATE_PRODUCT } from '../endpoints';
 import { IProductImages } from 'src/models';
 
 @Injectable({ providedIn: 'root' })
@@ -13,8 +13,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getTopProducts = (category:any, type:any) => {
-    const res = this.http.get<IProduct[]>(`${GET_PRODUCTS_LISTING}?category=${category}&type=${type}&numberOfRecords=8`)
-      .pipe()
+    const res = this.http.get<IProduct[]>(`${GET_PRODUCTS_LISTING}?category=${category}&type=${type}&numberOfRecords=8`).pipe()
     return res;
   }
 
@@ -24,12 +23,12 @@ export class ProductService {
   }
 
   addProduct = (data) => {
-    const response = this.http.post<IProduct>(ADD_PRODUCT, data).pipe()
-    return response;
+    const res = this.http.post<IProduct>(ADD_PRODUCT, data).pipe()
+    return res;
   }
 
-  getAllProducts = () => {  
-    const res = this.http.get<IProduct[]>(GET_PRODUCTS).pipe(res => res);
+  getProductByDeptCategory = (dept:string, category:string) => {  
+    const res = this.http.get<IProduct[]>(`${GET_PRODUCT}/${dept}/${category}`).pipe(res => res);
     return res;
   }
 

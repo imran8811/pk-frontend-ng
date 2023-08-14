@@ -3,6 +3,7 @@ import { IProduct } from 'src/models/product.model';
 
 import { ProductService, GlobalService  } from 'src/services';
 import { ActivatedRoute, Router } from '@angular/router';
+import { GLOBAL_CONSTANTS } from 'src/constants/global.constants';
 import { basePath } from 'src/endpoints'
 
 @Component({
@@ -18,11 +19,11 @@ export class AdminProductsComponent implements OnInit {
   constructor(private globalService: GlobalService, private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.getProducts()
+    this.getProductByDeptCategory();
   }
 
-  getProducts = () => {
-    const res = this.productService.getAllProducts().subscribe(res => {
+  getProductByDeptCategory = () => {
+    const res = this.productService.getProductByDeptCategory(GLOBAL_CONSTANTS.DEFAULT_DEPT, GLOBAL_CONSTANTS.DEFAULt_CATEGORY).subscribe(res => {
       this.products = res;
     });
   }

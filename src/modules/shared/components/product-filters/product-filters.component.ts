@@ -11,6 +11,6 @@ export class ProductFiltersComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  setFiltersData = (data) => {}
+  setFiltersData = (category, type) => {}
 
 }

@@ -12,7 +12,7 @@ import { AdminAuthService  } from 'src/services';
 
 export class CreateAdminUserComponent implements OnInit {
   createAdminUserForm: FormGroup = this.fb.group({
-    'name' : ['', Validators.required],
+    'fullName' : ['', Validators.required],
     'email' : ['', Validators.required],
     'password' : ['', Validators.required],
   })
@@ -25,7 +25,7 @@ export class CreateAdminUserComponent implements OnInit {
 
   onSubmit = () => {
     const data = {
-      name : this.form['name'].value,
+      fullName : this.form['fullName'].value,
       email : this.form['email'].value,
       password : this.form['password'].value
     }

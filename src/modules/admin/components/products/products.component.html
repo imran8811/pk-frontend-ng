@@ -4,11 +4,11 @@
     <div class="row">
       <h2 class="text-center mb-3">Products</h2>
       <div class="col-3" *ngFor="let product of products | sortBy : 'desc'">
-        <img [src]="BASE_PATH + product.product_images[0]?.path +'/'+ product.product_images[0]?.name" alt="{{product.product_images[0]?.name}}" class="img-thumbnail">
+        <!-- <img [src]="BASE_PATH + product.product_images[0]?.path +'/'+ product.product_images[0]?.name" alt="{{product.product_images[0]?.name}}" class="img-thumbnail"> -->
         <p class="mb-0">
-          <span>{{product.colors}} </span>
-          <span class="text-capitalize">{{product.category}} </span>
-          <span class="text-capitalize">{{product.type | removeDash}} -</span>
+          <span>{{product.color}} </span>
+          <span class="text-capitalize">{{product.dept}} </span>
+          <span class="text-capitalize">{{product.category | removeDash}} -</span>
           <span>{{product.article_no}}</span>
         </p>
         <ul class="list-group">
@@ -17,7 +17,7 @@
           </li>
           <li class="text-capitalize">{{product.fitting}}</li>
           <li>
-            <span>{{product.fabric_weight}} OZ -</span>
+            <span>{{product.fabricWeight}} OZ -</span>
             <span>{{product.moq}} Pcs -</span>
             <span>$ {{product.price}}</span>
           </li>

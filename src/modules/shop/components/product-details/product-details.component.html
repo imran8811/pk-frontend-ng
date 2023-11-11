@@ -3,6 +3,8 @@
   <div class="loader" *ngIf="loader"></div>
   <div class="mb-5 product-details">
     <div class="row" *ngFor="let product of productDetails">
+      <h1>{{product.articleNo + '-' + product.dept + product.fitting + product.color + product.category + product.fitting }}</h1>
+      <hr />
       <div class="col-lg-6 mb-5">
         <ngb-carousel *ngIf="imageObject">
           <ng-template *ngFor="let image of imageObject" ngbSlide>
@@ -16,15 +18,15 @@
         <ul class="mb-5">
           <li class="row mb-2">
             <span class="col-lg-3 col-4">Article No.</span>
-            <span class="col-lg-9 col-8">{{product.article_no}}</span>
+            <span class="col-lg-9 col-8">{{product.articleNo}}</span>
           </li>
           <li class="row mb-2">
             <span class="col-lg-3 col-4">Fabric Details</span>
-            <span class="col-lg-9 col-8">{{product.fabric_weight + ' Ounce - ' + product.fabric}}</span>
+            <span class="col-lg-9 col-8">{{product.fabricWeight + ' Ounce - ' + product.fabric}}</span>
           </li>
           <li class="row mb-2">
             <span class="col-lg-3 col-4">Colors</span>
-            <span class="col-lg-9 col-8">{{product.colors}}</span>
+            <span class="col-lg-9 col-8">{{product.color}}</span>
           </li>
           <li class="row mb-2">
             <span class="col-lg-3 col-4">Waist Sizes</span>
@@ -32,15 +34,11 @@
           </li>
           <li class="row mb-2">
             <span class="col-lg-3 col-4">Wash Type</span>
-            <span class="col-lg-9 col-8">{{product.wash_type}}</span>
+            <span class="col-lg-9 col-8">{{product.washType}}</span>
           </li>
           <li class="row mb-2">
             <span class="col-lg-3 col-4">Category</span>
-            <span class="col-lg-9 col-8 text-capitalize">{{product.category}}</span>
-          </li>
-          <li class="row mb-2">
-            <span class="col-lg-3 col-4">Type</span>
-            <span class="col-lg-9 col-8 text-capitalize">{{product.type | removeDash}}</span>
+            <span class="col-lg-9 col-8 text-capitalize">{{product.category | removeDash}}</span>
           </li>
           <li class="row mb-2">
             <span class="col-lg-3 col-4">Shipping</span>
@@ -56,11 +54,11 @@
           </li>
           <li class="row mb-2">
             <span class="col-lg-3 col-4">Price</span>
-            <span class="col-lg-9 col-8">${{product.price}}</span>
+            <span class="col-lg-9 col-8">PKR-{{product.price}}/piece</span>
           </li>
           <li class="row mb-2">
             <span class="col-lg-3 col-4">Payment Terms</span>
-            <span class="col-lg-9 col-8">60% Advance 40% before shipping</span>
+            <span class="col-lg-9 col-8">60% Advance - 40% before shipping</span>
           </li>
         </ul>
         <div class="col-12 text-end">

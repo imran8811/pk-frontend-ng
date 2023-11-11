@@ -15,6 +15,7 @@ export const ADMIN_LOGOUT = `${baseRoute}/admin/logout`;
 
 export const GET_PRODUCT = `${baseRoute}/product`;
 export const GET_PRODUCTS_LISTING = `${baseRoute}/product-listing`;
+export const GET_ARTICLE_NO = `${baseRoute}/product/article-no`;
 
 //internal routes
 export const PRODUCT_DETAILS = '/wholesale-shop/product-details'

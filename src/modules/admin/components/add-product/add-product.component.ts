@@ -3,8 +3,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 import { ProductService } from 'src/services';
 import { IProduct } from 'src/models/product.model';
-
+import { GetObjectCommand, PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-add-product',
@@ -18,6 +19,11 @@ export class AddProductComponent implements OnInit {
   selectedFile: File;
   imageUploadedSuccess:boolean = false;
   imageUploadedError:boolean = false;
+
+  stepProductInfoStatus:boolean = true;
+  stepUploadImagesStatus:boolean = false;
+  uploadedImages:string[] = [];
+  latestArticleNo:IProduct;
 
   imageUploadForm = this.fb.group({
     'articleNo' : ['', Validators.required],
@@ -34,9 +40,8 @@ export class AddProductComponent implements OnInit {
     'moq' : ['', Validators.required],
     'price' : ['', Validators.required],
     'articleNo' : ['', Validators.required],
-    'category' : ['', Validators.required],
-    'dept' : ['', Validators.required],
-    'length' : ['', Validators.required],
+    'category' : ['jeans-pant', Validators.required],
+    'dept' : ['men', Validators.required],
     'slug' : ['', Validators.required],
   })
 
@@ -44,27 +49,47 @@ export class AddProductComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private productService: ProductService, private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getArticleNo();
+  }
 
-  fileOnChange = (e) => {
+  fileOnChange = async(e, imgType) => {
     if(e.target.files.length > 0) {
       this.imageUploadedSuccess = false;
       this.imageUploadedError = false;
-      const formData = new FormData()
+      const formData = new FormData();
       const files = e.target.files;
-      for (let i = 0; i < files.length; i++) {
-        formData.append(`productImages[${i}]`, files[i])
+      formData.append('images', files)
+      const productDept = this.addProductForm.get('dept').value;
+      const productCategory = this.addProductForm.get('category').value;
+      const articleNo =  this.addProductForm.get('articleNo').value;
+      const getUploadURL = await this.productService.generateUploadUrl(articleNo, productDept, productCategory, imgType).then(res => res);
+      console.log(getUploadURL);
+      try {
+        this.productService.productS3ImageUpload(getUploadURL, formData).subscribe(res => res);
+        this.uploadedImages.push(imgType);
+        this.imageUploadedSuccess = true;
+        console.log(this.uploadedImages)
+      } catch(err) {
+        this.imageUploadedError = true;
+        console.log(err)
       }
-      formData.append('articleNo', this.form['articleNo'].value)
-      this.productService.productImageUpload(formData).subscribe((data) => {
-        console.log(data);
-        if(data.type === 'success'){
-          this.imageUploadedSuccess = true;
-          this.imageUploadedError = false;
-        }
-      })
     }
   } 
+  
+  stepUploadImages(){
+    if(this.addProductForm.invalid){
+      this.addProductForm.markAllAsTouched();
+      return;
+    }
+    this.stepProductInfoStatus = !this.stepProductInfoStatus;
+    this.stepUploadImagesStatus = !this.stepUploadImagesStatus;
+  }
+
+  previousStep(){
+    this.stepProductInfoStatus = !this.stepProductInfoStatus;
+    this.stepUploadImagesStatus = !this.stepUploadImagesStatus;
+  }
 
   onSubmit = () => {
     const data = {
@@ -79,7 +104,6 @@ export class AddProductComponent implements OnInit {
       articleNo: this.addProductForm.get('articleNo').value,
       category: this.addProductForm.get('category').value,
       dept: this.addProductForm.get('dept').value,
-      length: this.addProductForm.get('length').value,
       slug: this.addProductForm.get('slug').value,
     }
     this.productService.addProduct(data).subscribe(res => {
@@ -87,7 +111,15 @@ export class AddProductComponent implements OnInit {
         this.router.navigate(['/admin/products'])
       }  
     })
-    
+  }
+
+  getArticleNo(){
+    this.productService.getArticleNo().subscribe(res => {
+      console.log(res);
+      const addOne = Number(res+1).toString();
+      this.addProductForm.controls['articleNo'].setValue(addOne);
+      this.addProductForm.controls['articleNo'].disable();
+    });
   }
   
 }

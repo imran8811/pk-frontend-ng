@@ -23,9 +23,7 @@ export class AdminProductsComponent implements OnInit {
   }
 
   getProductByDeptCategory = () => {
-    const res = this.productService.getProductByDeptCategory(GLOBAL_CONSTANTS.DEFAULT_DEPT, GLOBAL_CONSTANTS.DEFAULt_CATEGORY).subscribe(res => {
-      this.products = res;
-    });
+    this.products = this.productService.getProductByDeptCategory(GLOBAL_CONSTANTS.DEFAULT_DEPT, GLOBAL_CONSTANTS.DEFAULt_CATEGORY);
   }
 
   deleteProduct = (article_no) => {

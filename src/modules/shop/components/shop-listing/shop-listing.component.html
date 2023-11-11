@@ -10,15 +10,21 @@
       </div>
       <div class="col-10">
         <div class="row">
-          <div class="col-lg-3 mb-5" *ngFor="let product of products | sortBy : 'desc'">
-            <!-- <a [routerLink]="['/wholesale-shop/product-details/', product.articleNo]" class="d-block mb-3" target="_blank" rel="noreferrer">
+          <div class="col-lg-3 mb-5" *ngFor="let product of products | sortBy : 'desc'; let i=index">
+            <a 
+              routerLink="{{'/wholesale-shop/'+product.dept+'/'+product.category+'/'+product.articleNo}}"
+              class="d-block mb-3" 
+              target="_blank" 
+              rel="noreferrer">
               <img 
-                src="{{BASE_PATH+product.product_images[0]?.path+'/'+product.product_images[0]?.name}}"
-                alt={{product.product_images[0]?.path}}
-                height="370"/>
-            </a> -->
+                src="https://pkapparel.s3.amazonaws.com/men/jeans-pant/10051/front-img.jpg"
+                alt="{{singleSignedURL}}"
+                height="370" />
+            </a>
             <div class="product-data">
-              <a [routerLink]="['/wholesale-shop/product-details/', product.article_no]" class="d-block text-center">
+              <a 
+                routerLink="{{'/wholesale-shop/'+product.dept+'/'+product.category+'/'+product.articleNo}}"
+                class="d-block text-center">
                 <span class="text-capitalize">{{product.category | removeDash}} </span>
                 <span class="text-capitalize">{{product.type | removeDash}} </span>
                 <span class="text-capitalize">{{product.color}} </span>

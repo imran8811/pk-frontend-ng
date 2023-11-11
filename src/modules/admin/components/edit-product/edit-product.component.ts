@@ -13,7 +13,9 @@ import { ProductService } from 'src/services';
 
 export class EditProductComponent implements OnInit {
   productDetails: IProduct[];
-  productId: string = this.route.snapshot.paramMap.get('id');
+  productDept: string = this.route.snapshot.paramMap.get('dept');
+  productCategory: string = this.route.snapshot.paramMap.get('category');
+  articleNo: string = this.route.snapshot.paramMap.get('id');
 
   imageUploadForm = this.fb.group({
     'article_no' : ['', Validators.required],
@@ -41,22 +43,22 @@ export class EditProductComponent implements OnInit {
   constructor(private fb: FormBuilder, private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getProductDetails(this.productId)
+    this.getProductDetails(this.productDept, this.productCategory, this.articleNo);
   }
 
-  getProductDetails = (article_no) => {
-    const res = this.productService.getProductDetails(article_no).subscribe(res => {
+  getProductDetails = (productDept, productCategory, articleNo) => {
+    const res = this.productService.getProductDetails(productDept, productCategory, articleNo).subscribe(res => {
       res.map(data => {
         this.updateProductForm = this.fb.group({
           'sizes' : [data.sizes, Validators.required],
-          'colors' : [data.colors, Validators.required],
+          'colors' : [data.color, Validators.required],
           'fitting' : [data.fitting, Validators.required],
           'fabric' : [data.fabric, Validators.required],
-          'fabric_weight' : [data.fabric_weight, Validators.required],
+          'fabric_weight' : [data.fabricWeight, Validators.required],
           'wash_type' : [data.wash_type, Validators.required],
           'moq' : [data.moq, Validators.required],
           'price' : [data.price, Validators.required],
-          'article_no' : [data.article_no, Validators.required],
+          'article_no' : [data.articleNo, Validators.required],
           'category' : [data.category, Validators.required],
           'type' : [data.type, Validators.required],
           'length' : [data.length, Validators.required],
@@ -73,12 +75,12 @@ export class EditProductComponent implements OnInit {
       formData.append(`product_images[${i}]`, files[i])
     }
     formData.append('article_no', this.form['article_no'].value)
-    const res = this.productService.productImageUpload(formData).subscribe(data => data)
+    const res = this.productService.productS3ImageUpload(formData, '').subscribe(data => data)
   } 
 
   onSubmit = () => {
     const data = {
-      id: this.productId,
+      articleNo: this.articleNo,
       sizes: this.updateProductForm.get('sizes').value,
       colors: this.updateProductForm.get('colors').value,
       fitting: this.updateProductForm.get('fitting').value,

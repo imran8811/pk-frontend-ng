@@ -34,14 +34,14 @@ export class AdminLoginComponent implements OnInit {
     }
     const res = this.adminAuthService.adminLogin(data).subscribe(res => {
       console.log(res);
-      // if(res?.type === 'success'){
-      //   const userData = {
-      //     fullName : res.data.fullName,
-      //     token: res.token
-      //   }
-      //   localStorage.setItem('userData', JSON.stringify(userData))
-      //   this.router.navigate(['/admin/add-product'])
-      // }
+      if(res?.type === 'success'){
+        const userData = {
+          fullName : res.data.fullName,
+          token: res.token
+        }
+        localStorage.setItem('userData', JSON.stringify(userData))
+        this.router.navigate(['/admin/add-product'])
+      }
     })
   }
   

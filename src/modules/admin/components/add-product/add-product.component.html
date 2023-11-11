@@ -4,10 +4,13 @@
     <div class='col-lg-12 mt-5 mb-5'>
       <div class='row justify-content-center'>
         <h2 class='text-center mb-3'>Add Product</h2>
-        <div class='row mb-3'>
+        <div class='row mb-3' *ngIf="stepProductInfoStatus">
           <div class='col-4 mb-3'>
             <label for='article-no'>Article No.</label>
             <input class='form-control' id="article-no" formControlName="articleNo" />
+            <ng-container *ngIf="form.articleNo.invalid && (form.articleNo.dirty || form.articleNo.touched)">
+              <span class="text-danger" *ngIf="form.articleNo.errors?.['required']">Required</span>
+            </ng-container>
           </div>
           <div class='col-4'>
             <label for='category'>Dept.</label>
@@ -17,6 +20,9 @@
               <option value='boys'>Boys</option>
               <option value='girls'>Girls</option>
             </select>
+            <ng-container *ngIf="form.dept.invalid && (form.dept.dirty || form.dept.touched)">
+              <span class="text-danger" *ngIf="form.dept.errors?.['required']">Required</span>
+            </ng-container>
           </div>
           <div class='col-4 mb-3'>
             <label for='type'>Category</label>
@@ -26,14 +32,23 @@
               <option value='cargo-trouser'>Cargo Trouser</option>
               <option value='biker-jeans'>Biker Jeans</option>
             </select>
+            <ng-container *ngIf="form.category.invalid && (form.category.dirty || form.category.touched)">
+              <span class="text-danger" *ngIf="form.category.errors?.['required']">Required</span>
+            </ng-container>
           </div>
           <div class='col-4 mb-3'>
             <label for='product-slug'>Product Slug</label>
             <input type="text" id='product-slug' class='form-control' formControlName="slug" />
+            <ng-container *ngIf="form.slug.invalid && (form.slug.dirty || form.slug.touched)">
+              <span class="text-danger" *ngIf="form.slug.errors?.['required']">Required</span>
+            </ng-container>
           </div>
           <div class='col-4'>
             <label for='sizes'>Sizes</label>
             <input type="text" id='sizes' class='form-control' formControlName="sizes" />
+            <ng-container *ngIf="form.sizes.invalid && (form.sizes.dirty || form.sizes.touched)">
+              <span class="text-danger" *ngIf="form.sizes.errors?.['required']">Required</span>
+            </ng-container>
           </div>
           <div class='col-4 mb-3'>
             <label for='fitting'>Fitting</label>
@@ -44,38 +59,81 @@
               <option value='regular'>Regular</option>
               <option value='ankle'>Ankle</option>
             </select>
+            <ng-container *ngIf="form.fitting.invalid && (form.fitting.dirty || form.fitting.touched)">
+              <span class="text-danger" *ngIf="form.fitting.errors?.['required']">Required</span>
+            </ng-container>
           </div>
           <div class='col-4'>
             <label for='fabric'>Fabric Content</label>
             <input type="text" id='fabric' class='form-control' formControlName="fabric" />
+            <ng-container *ngIf="form.fabric.invalid && (form.fabric.dirty || form.fabric.touched)">
+              <span class="text-danger" *ngIf="form.fabric.errors?.['required']">Required</span>
+            </ng-container>
           </div>
           <div class='col-4 mb-3'>
             <label for='fabric-weight'>Fabric Weight</label>
             <input type="text" id='fabric-weight' class='form-control' formControlName="fabricWeight" />
+            <ng-container *ngIf="form.fabricWeight.invalid && (form.fabricWeight.dirty || form.fabricWeight.touched)">
+              <span class="text-danger" *ngIf="form.fabricWeight.errors?.['required']">Required</span>
+            </ng-container>
           </div>
           <div class='col-4'>
             <label for='wash-type'>Wash Type</label>
             <input type="text" id='wash-type' class='form-control' formControlName="washType" />
+            <ng-container *ngIf="form.washType.invalid && (form.washType.dirty || form.washType.touched)">
+              <span class="text-danger" *ngIf="form.washType.errors?.['required']">Required</span>
+            </ng-container>
           </div>
           <div class='col-4'>
             <label for='moq'>MOQ</label>
             <input type="text" id='moq' class='form-control' formControlName="moq" />
+            <ng-container *ngIf="form.moq.invalid && (form.moq.dirty || form.moq.touched)">
+              <span class="text-danger" *ngIf="form.moq.errors?.['required']">Required</span>
+            </ng-container>
           </div>
           <div class='col-4 mb-3'>
             <label for='colors'>Color</label>
             <input type="text" id='colors' class='form-control' formControlName="color" />
+            <ng-container *ngIf="form.color.invalid && (form.color.dirty || form.color.touched)">
+              <span class="text-danger" *ngIf="form.color.errors?.['required']">Required</span>
+            </ng-container>
           </div>
           <div class='col-4'>
             <label for='price'>Price</label>
             <input type="text" id='price' class='form-control' formControlName="price" />
+            <ng-container *ngIf="form.price.invalid && (form.price.dirty || form.price.touched)">
+              <span class="text-danger" *ngIf="form.price.errors?.['required']">Required</span>
+            </ng-container>
           </div>
-          <div class='col-lg-4'>
-            <label for='product-files'>Product Files</label>
-            <input type="file" id='product-files' (change)="fileOnChange($event)" class="form-control" multiple />
+          <button type="button" class="btn btn-primary" (click)="stepUploadImages()">Upload Images</button>
+        </div>
+        <div class="row mb-3" *ngIf="stepUploadImagesStatus">
+          <div class='col-4 mb-3'>
+            <label for='product-files'>Front Image</label>
+            <input type="file" id='product-files' (change)="fileOnChange($event, 'front-img')" class="form-control" />
+          </div>
+          <div class='col-4 mb-3'>
+            <label for='product-files'>Back Image</label>
+            <input type="file" id='product-files' (change)="fileOnChange($event, 'back-img')" class="form-control" />
+          </div>
+          <div class='col-4 mb-3'>
+            <label for='product-files'>Other One</label>
+            <input type="file" id='product-files' (change)="fileOnChange($event, 'other-one')" class="form-control" />
+          </div>
+          <div class='col-4 mb-3'>
+            <label for='product-files'>Other Two</label>
+            <input type="file" id='product-files' (change)="fileOnChange($event, 'other-two')" class="form-control" />
+          </div>
+          <div class='col-4 mb-3'>
+            <label for='product-files'>Other Three</label>
+            <input type="file" id='product-files' (change)="fileOnChange($event, 'other-three')" class="form-control" />
+          </div>
+          <div class="col-12">
             <p class="text-success" *ngIf="imageUploadedSuccess">Image Uploaded Successfully</p>
             <p class="text-danger" *ngIf="imageUploadedError">Image Uploading Error</p>
           </div>
-          <div class='col-12 pt-4'>
+          <div class='col-12 pt-4 justify-content-center'>
+            <button type="button" class='btn btn-info col-4' (click)="previousStep()">Previous Step</button>
             <button type="submit" class='btn btn-primary col-4'>Submit</button>
           </div>
         </div>

@@ -3,7 +3,8 @@ import { IProduct } from 'src/models';
 import { ProductService } from 'src/services';
 import { Title, Meta } from '@angular/platform-browser';
 import { GLOBAL_CONSTANTS } from 'src/constants/global.constants';
-
+import { environment } from '../../../../environments/environment.prod'
+import * as AWS from 'aws-sdk';
 import { basePath } from 'src/endpoints';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -40,9 +41,28 @@ export class ShopListingComponent implements OnInit {
     silicone: 0
   }
 
+  S3 = new AWS.S3({
+    region : environment.s3Config.region,
+    credentials: {
+      accessKeyId : environment.s3Config.accessKey,
+      secretAccessKey : environment.s3Config.secretAccessKey,
+    }
+  });
+
+  singleSignedURL:string = '';
+
   constructor(private fb: FormBuilder, private productService: ProductService, private title: Title, private meta: Meta) { }
 
   ngOnInit(): void {
+    const params = {
+      Bucket: environment.s3Config.bucket,
+      Key : "men/jeans-pant/10051/front-img.jpg",
+      Expires: 60
+    }
+    const res = this.S3.getSignedUrl('getObject', params);
+    this.singleSignedURL = res.split('?')[0];
+    console.log(res);
+    console.log(this.singleSignedURL);
     this.loader = true
     this.getProductsListing()
     this.title.setTitle('Wholesale Shop - PK Apparel')
@@ -57,12 +77,8 @@ export class ShopListingComponent implements OnInit {
   }
 
   getProductsListing = () => {
-    const res = this.productService.getProductByDeptCategory(GLOBAL_CONSTANTS.DEFAULT_DEPT, GLOBAL_CONSTANTS.DEFAULt_CATEGORY).subscribe(data => {
-      console.log(data);
-      this.products = data
-      this.loader = false
-
-    });
+    this.products = this.productService.getProductByDeptCategory(GLOBAL_CONSTANTS.DEFAULT_DEPT, GLOBAL_CONSTANTS.DEFAULt_CATEGORY);
+    this.loader = false
   } 
 
 }

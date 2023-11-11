@@ -1,14 +1,14 @@
 import { IProductImages } from "./productImages.model";
 export interface IProduct {
   sizes : string,
-  colors : string,
+  color : string,
   fitting : string,
   fabric: string,
-  fabric_weight: string,
+  fabricWeight: string,
   wash_type : string,
   moq : string,
   price : string,
-  article_no : string,
+  articleNo : string,
   category : string,
   type : string,
   length : string,

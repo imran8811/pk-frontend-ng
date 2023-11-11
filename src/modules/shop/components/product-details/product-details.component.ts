@@ -14,7 +14,9 @@ import { RemoveDashPipe } from 'src/pipes';
 export class ProductDetailsComponent implements OnInit {
   BASE_PATH = basePath;
   productDetails: IProduct[];
-  productId: string = this.route.snapshot.paramMap.get('id');
+  productDept: string = this.route.snapshot.paramMap.get('dept');
+  productCategory: string = this.route.snapshot.paramMap.get('category');
+  articleNo: string = this.route.snapshot.paramMap.get('id');
   productImages = [];
   imageObject = [];
   loader:boolean = false;
@@ -32,20 +34,21 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   getProductDetails = () => {
-    const res = this.productService.getProductDetails(this.productId).subscribe(data => {
+    const res = this.productService.getProductDetails(this.productDept, this.productCategory, this.articleNo).subscribe(data => {
+      console.log(data);
       this.productDetails = data;
       this.loader = false;
-      this.title.setTitle(`${data[0].article_no}-${data[0].category.toUpperCase()}-${data[0].fitting.toUpperCase()} Fit-${this.removeDash.transform(data[0].type).toUpperCase()}-${data[0].colors}`)
-      this.productImages = data[0].product_images
-      for(var i=0; i < this.productImages.length; i++){
-        this.imageObject.push(
-          {
-            path: basePath+'/'+this.productImages[i].path+'/'+this.productImages[i].name,
-            thumbImage: basePath+'/'+this.productImages[i].path+'/'+this.productImages[i].name,
-            alt: this.productImages[i].path+'/'+this.productImages[i].name,
-          }
-        )
-      }
+      this.title.setTitle(`${data[0].articleNo}-${data[0].category}-${data[0].fitting}-${data[0].color}`);
+      // this.productImages = data[0].product_images
+      // for(var i=0; i < this.productImages.length; i++){
+      //   this.imageObject.push(
+      //     {
+      //       path: basePath+'/'+this.productImages[i].path+'/'+this.productImages[i].name,
+      //       thumbImage: basePath+'/'+this.productImages[i].path+'/'+this.productImages[i].name,
+      //       alt: this.productImages[i].path+'/'+this.productImages[i].name,
+      //     }
+      //   )
+      // }
     })
   }
 }

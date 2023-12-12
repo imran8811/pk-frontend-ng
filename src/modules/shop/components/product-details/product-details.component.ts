@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { basePath } from 'src/endpoints';
 import { IProduct } from 'src/models';
 import { ProductService } from 'src/services';
 import { Title } from '@angular/platform-browser';
 import { RemoveDashPipe } from 'src/pipes';
+import { BASE_URL, PRODUCT_IMAGES_BASE_URL } from 'src/app-routes';
 
 @Component({
   selector: 'app-product-details',
@@ -12,13 +12,13 @@ import { RemoveDashPipe } from 'src/pipes';
   styleUrls: ['./product-details.component.scss'],
 })
 export class ProductDetailsComponent implements OnInit {
-  BASE_PATH = basePath;
+  BASE_URL = BASE_URL;
+  PRODUCT_IMAGES_BASE_URL = PRODUCT_IMAGES_BASE_URL;
   productDetails: IProduct[];
   productDept: string = this.route.snapshot.paramMap.get('dept');
   productCategory: string = this.route.snapshot.paramMap.get('category');
   articleNo: string = this.route.snapshot.paramMap.get('id');
   productImages = [];
-  imageObject = [];
   loader:boolean = false;
   
   constructor(

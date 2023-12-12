@@ -32,6 +32,7 @@
     "crypto": "^1.0.1",
     "express": "^4.15.2",
     "express-force-domain": "^0.0.6",
+    "konva": "^9.2.3",
     "localstorage-polyfill": "^1.0.1",
     "lodash": "^4.17.21",
     "rxjs": "~7.5.0",

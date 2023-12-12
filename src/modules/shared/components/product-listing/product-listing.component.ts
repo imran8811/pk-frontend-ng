@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductService } from 'src/services';
 import { IProduct } from 'src/models/product.model';
-import { basePath } from 'src/endpoints'
+import { BASE_URL, PRODUCT_IMAGES_BASE_URL } from 'src/app-routes'
 
 @Component({
   selector: 'app-product-listing',
@@ -12,7 +12,7 @@ import { basePath } from 'src/endpoints'
 export class ProductListingComponent implements OnInit {
   @Input() category = ''
   @Input() type = ''
-  BASE_ROUTE = basePath
+  BASE_URL = BASE_URL
 
   productListing:IProduct[] = [];
 

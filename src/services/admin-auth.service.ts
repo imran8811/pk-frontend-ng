@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { ADMIN_LOGIN, ADMIN_LOGOUT, CREATE_ADMIN_USER } from '../endpoints';
+import { ADMIN_LOGIN, ADMIN_LOGOUT, CREATE_ADMIN_USER } from '../api-endpoints';
 import { ILogin } from 'src/models';
 
 @Injectable({ providedIn: 'root' })

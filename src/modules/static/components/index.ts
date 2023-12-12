@@ -5,3 +5,4 @@ export * from './factory/factory.component'
 export * from './certifications/certifications.component'
 export * from './blog/blog.component'
 export * from './page-not-found/page-not-found.component'
+export * from './order-now/order-now.component';

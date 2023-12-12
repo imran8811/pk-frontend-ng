@@ -1,12 +1,12 @@
 <div class="container main-wrapper">
   <app-header></app-header>
-  <div class="row product-listing">
+  <div class="product-listing">
     <h2 class="text-center mb-2">
       <span class="text-capitalize">{{category}}</span>&nbsp; <span class="text-capitalize">{{type | removeDash}}</span>
     </h2>
     <div class="row">
       <div class="col-2">
-        <app-product-filters></app-product-filters>
+        <app-product-filters (productFilters)="getProductsByFilters($event)"></app-product-filters>
       </div>
       <div class="col-10">
         <div class="row">
@@ -17,19 +17,19 @@
               target="_blank" 
               rel="noreferrer">
               <img 
-                src="https://pkapparel.s3.amazonaws.com/men/jeans-pant/10051/front-img.jpg"
-                alt="{{singleSignedURL}}"
+                src="{{PRODUCT_IMAGES_BASE_URL+product.dept+'/'+product.category+'/'+product.articleNo+'/'+'front-img.jpg'}}"
+                alt="{{product.slug}}"
                 height="370" />
             </a>
             <div class="product-data">
               <a 
                 routerLink="{{'/wholesale-shop/'+product.dept+'/'+product.category+'/'+product.articleNo}}"
                 class="d-block text-center">
-                <span class="text-capitalize">{{product.category | removeDash}} </span>
+                <span class="text-capitalize">PK-{{product.articleNo}} | </span>
+                <!-- <span class="text-capitalize">{{product.category | removeDash}} </span> -->
                 <span class="text-capitalize">{{product.type | removeDash}} </span>
                 <span class="text-capitalize">{{product.color}} </span>
-                <span class="text-capitalize">{{product.fitting}} Fit </span>
-                <span class="text-capitalize">#{{product.articleNo}}</span>
+                <span class="text-capitalize">{{product.fitting}} Fit</span>
               </a>
             </div>
           </div>

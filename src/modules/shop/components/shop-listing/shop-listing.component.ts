@@ -5,7 +5,7 @@ import { Title, Meta } from '@angular/platform-browser';
 import { GLOBAL_CONSTANTS } from 'src/constants/global.constants';
 import { environment } from '../../../../environments/environment.prod'
 import * as AWS from 'aws-sdk';
-import { basePath } from 'src/endpoints';
+import { BASE_URL, PRODUCT_IMAGES_BASE_URL } from 'src/app-routes';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -17,7 +17,8 @@ export class ShopListingComponent implements OnInit {
   category: string = 'men'
   type: string = 'jeans-pant'
   products: IProduct[];
-  BASE_PATH = basePath;
+  BASE_URL = BASE_URL;
+  PRODUCT_IMAGES_BASE_URL = PRODUCT_IMAGES_BASE_URL;
   loader:boolean = false;
   shopFilters: FormGroup;
   quantityPerCategory = {
@@ -41,6 +42,8 @@ export class ShopListingComponent implements OnInit {
     silicone: 0
   }
 
+  productFilters;
+
   S3 = new AWS.S3({
     region : environment.s3Config.region,
     credentials: {
@@ -59,12 +62,13 @@ export class ShopListingComponent implements OnInit {
       Key : "men/jeans-pant/10051/front-img.jpg",
       Expires: 60
     }
-    const res = this.S3.getSignedUrl('getObject', params);
-    this.singleSignedURL = res.split('?')[0];
-    console.log(res);
-    console.log(this.singleSignedURL);
-    this.loader = true
-    this.getProductsListing()
+    // const res = this.S3.getSignedUrl('getObject', params);
+    // this.singleSignedURL = res.split('?')[0];
+    // this.singleSignedURL = res;
+    // console.log(res);
+    // console.log(this.singleSignedURL);
+    this.loader = true;
+    this.getProductsListing();
     this.title.setTitle('Wholesale Shop - PK Apparel')
     this.meta.addTags([
       {name: 'keywords', content: 'Jeans Wholesale Shop, Jeans Pants Wholesale Shop'},
@@ -77,8 +81,18 @@ export class ShopListingComponent implements OnInit {
   }
 
   getProductsListing = () => {
-    this.products = this.productService.getProductByDeptCategory(GLOBAL_CONSTANTS.DEFAULT_DEPT, GLOBAL_CONSTANTS.DEFAULt_CATEGORY);
-    this.loader = false
-  } 
+    this.productService.getProductByDeptCategory(GLOBAL_CONSTANTS.DEFAULT_DEPT, GLOBAL_CONSTANTS.DEFAULt_CATEGORY).subscribe(res => {
+      this.products = res;
+      this.loader = false;
+    });
+  }
+
+  getProductsByFilters(e){
+    this.productService.getProductsByFilters(JSON.parse(e)).subscribe((res) => {
+      console.log(res)
+      this.products = res.data;
+      this.loader = false;
+    });
+  }
 
 }

@@ -1,85 +1,89 @@
   <form class="product-filters">
     <div class="mb-3">
       <p class="mb-2 text-bold">Category</p>
-      <ul>
-        <li class="row border-bottom-grey">
-          <a href="#" class="col-10" (click)="setFiltersData('category', 'all')">All</a>
-          <span class="col-2">0</span>
+      <ul class="product-filters-list">
+        <li class="row border-bottom-grey" [ngClass]="defaultFilters['dept']['men']? 'active' : ''">
+          <a href="javascript:void(0)" class="col-10" (click)="setFiltersData('dept', 'men')">Men</a>
+          <span class="col-2">(0)</span>
         </li>
-        <li class="row border-bottom-grey mt-2">
-          <a href="#" class="col-10" (click)="setFiltersData('category', 'men')">Men</a>
-          <span class="col-2">0</span>
+        <li class="row border-bottom-grey" [ngClass]="defaultFilters['dept']['women']? 'active' : ''">
+          <a href="javascript:void(0)" class="col-10" (click)="setFiltersData('dept', 'women')">Women</a>
+          <span class="col-2">(0)</span>
         </li>
-        <li class="row border-bottom-grey mt-2">
-          <a href="#" class="col-10" (click)="setFiltersData('category', 'women')">Women</a>
-          <span class="col-2">0</span>
+        <li class="row border-bottom-grey" [ngClass]="defaultFilters['dept']['boys']? 'active' : ''">
+          <a href="javascript:void(0)" class="col-10" (click)="setFiltersData('dept', 'boys')">Boys</a>
+          <span class="col-2">(0)</span>
         </li>
-        <li class="row border-bottom-grey mt-2">
-          <a href="#" class="col-10" (click)="setFiltersData('category', 'boys')">Boys</a>
-          <span class="col-2">0</span>
-        </li>
-        <li class="row border-bottom-grey mt-2">
-          <a href="#" class="col-10" (click)="setFiltersData('category', 'girls')">Girls</a>
-          <span class="col-2">0</span>
+        <li class="row border-bottom-grey" [ngClass]="defaultFilters['dept']['girls']? 'active' : ''">
+          <a href="javascript:void(0)" class="col-10" (click)="setFiltersData('dept', 'girls')">Girls</a>
+          <span class="col-2">(0)</span>
         </li>
       </ul>
     </div>
     <div class="mb-3">
       <p class="mb-2">Type</p>
       <ul>
-        <li class="row border-bottom-grey">
-          <a href="#" class="col-10" (click)="setFiltersData('type', 'jeans-pant')">Jeans Pants</a>
-          <span class="col-2">0</span>
+        <li class="row border-bottom-grey" [ngClass]="defaultFilters['category']['jeans-pant']? 'active' : ''">
+          <a href="javascript:void(0)" class="col-10" (click)="setFiltersData('category', 'jeans-pant')">Jeans Pants</a>
         </li>
-        <li class="row border-bottom-grey mt-2">
-          <a href="#" class="col-10" (click)="setFiltersData('type', 'chino-pant')">Chino Pants</a>
-          <span class="col-2">0</span>
+        <li class="row border-bottom-grey" [ngClass]="defaultFilters['category']['chino-pant']? 'active' : ''">
+          <a href="javascript:void(0)" class="col-10" (click)="setFiltersData('category', 'chino-pant')">Chino Pants</a>
         </li>
-        <li class="row border-bottom-grey mt-2">
-          <a href="#" class="col-10" (click)="setFiltersData('type', 'cargo-trouser')">Cargo Trousers</a>
-          <span class="col-2">0</span>
+        <li class="row border-bottom-grey" [ngClass]="defaultFilters['category']['cargo-trouser']? 'active' : ''">
+          <a href="javascript:void(0)" class="col-10" (click)="setFiltersData('category', 'cargo-trouser')">Cargo Trousers</a>
+        </li>
+        <li class="row border-bottom-grey" [ngClass]="defaultFilters['category']['cargo-short']? 'active' : ''">
+          <a href="javascript:void(0)" class="col-10" (click)="setFiltersData('category', 'cargo-short')">Cargo Shorts</a>
         </li>
       </ul>
     </div>
-    <div class="mb-3">
+    <form class="mb-3">
       <p class="mb-2">Fitting</p>
       <ul>
         <li class="row border-bottom-grey">
-          <a href="#" class="col-10" (click)="setFiltersData('type', 'slim')">Slim</a>
-          <span class="col-2">0</span>
+          <label for="slim">
+            <input type="checkbox" id="slim" checked (change)="setFiltersData('fitting', 'slim')">Slim
+          </label>
         </li>
-        <li class="row border-bottom-grey mt-2">
-          <a href="#" class="col-10" (click)="setFiltersData('type', 'straight')">Straight</a>
-          <span class="col-2">0</span>
+        <li class="row border-bottom-grey">
+          <label for="straight">
+            <input type="checkbox" id="straight" checked (change)="setFiltersData('fitting', 'straight')">Straight
+          </label>
         </li>
-        <li class="row border-bottom-grey mt-2">
-          <a href="#" class="col-10" (click)="setFiltersData('type', 'skinny')">Skinny</a>
-          <span class="col-2">0</span>
+        <li class="row border-bottom-grey">
+          <label for="skinny">
+            <input type="checkbox" id="skinny" checked (change)="setFiltersData('fitting', 'skinny')">Skinny
+          </label>
         </li>
-        <li class="row border-bottom-grey mt-2">
-          <a href="#" class="col-10" (click)="setFiltersData('type', 'ankle')">Ankle</a>
-          <span class="col-2">0</span>
+        <li class="row border-bottom-grey">
+          <label for="ankle">
+            <input type="checkbox" id="ankle" checked (change)="setFiltersData('fitting', 'ankle')">Ankle
+          </label>
         </li>
       </ul>
-    </div>
+    </form>
     <div class="mb-3">
       <p class="mb-2">Colors</p>
       <ul>
         <li class="row border-bottom-grey">
-          <a href="#" class="col-10" (click)="setFiltersData('color', 'sky-blue')">Sky Blue</a>
-          <span class="col-2">0</span>
+          <label for="color-sky-blue">
+            <input type="checkbox" id="color-sky-blue" checked (change)="setFiltersData('color', 'sky-blue')">Sky Blue
+          </label>
         </li>
-        <li class="row border-bottom-grey mt-2">
-          <a href="#" class="col-10" (click)="setFiltersData('color', 'mid-blue')">Mid Blue</a>
-          <span class="col-2">0</span>
+        <li class="row border-bottom-grey">
+          <label for="color-mid-blue">
+            <input type="checkbox" id="color-mid-blue" checked (change)="setFiltersData('color', 'mid-blue')">Mid Blue
+          </label>
         </li>
-        <li class="row border-bottom-grey mt-2">
-          <a href="#" class="col-10" (click)="setFiltersData('color', 'navy-blue')">Navy Blue</a>
-          <span class="col-2">0</span>
+        <li class="row border-bottom-grey">
+          <label for="color-navy-blue">
+            <input type="checkbox" id="color-navy-blue" checked (change)="setFiltersData('color', 'navy-blue')">Navy Blue
+          </label>
         </li>
-        <li class="row border-bottom-grey mt-2">
-          <a href="#" class="col-10" (click)="setFiltersData('color', 'black')">Black</a>
-          <span class="col-2">0</span>
+        <li class="row border-bottom-grey">
+          <label for="color-black">
+            <input type="checkbox" id="color-black" checked (change)="setFiltersData('color', 'black')">Black
+          </label>
         </li>
       </ul>
     </div>
@@ -87,16 +91,14 @@
       <p class="mb-2">Washes</p>
       <ul>
         <li class="row border-bottom-grey">
-          <a href="#" class="col-10" (click)="setFiltersData('wash', 'sky-blue')">Destroyed</a>
-          <span class="col-2">0</span>
+          <label for="wash-destroyed">
+            <input type="checkbox" id="wash-destroyed" checked (change)="setFiltersData('washType', 'destroyed')">Destroyed
+          </label>
         </li>
-        <li class="row border-bottom-grey mt-2">
-          <a href="#" class="col-10" (click)="setFiltersData('color', 'mid-blue')">Ripped</a>
-          <span class="col-2">0</span>
-        </li>
-        <li class="row border-bottom-grey mt-2">
-          <a href="#" class="col-10" (click)="setFiltersData('color', 'navy-blue')">Silicone</a>
-          <span class="col-2">0</span>
+        <li class="row border-bottom-grey">
+          <label for="wash-ripped">
+            <input type="checkbox" id="wash-ripped" checked (change)="setFiltersData('washType', 'ripped')">Ripped
+          </label>
         </li>
       </ul>
     </div>

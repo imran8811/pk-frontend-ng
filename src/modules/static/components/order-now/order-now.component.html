@@ -1,0 +1,71 @@
+<div class="container main-wrapper">
+  <app-header></app-header>
+  <div class="col-12 page-about">
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6 mb-5">
+        <h1 class="page-title">Order Now</h1>
+        <form [formGroup]="orderForm">
+          <div class="mb-3 row">
+            <label for="article-no" class="col-4">Article No.</label>
+            <span class="col-8">{{articleNo}}</span>
+          </div>
+          <div class="mb-3 row">
+            <label for="dept" class="col-4">Department</label>
+            <select class="col-8" id="dept" formControlName="dept">
+              <option value="men">Men</option>
+              <option value="women">Women</option>
+              <option value="girls">Girls</option>
+              <option value="boys">Boys</option>
+            </select>
+          </div>
+          <div class="mb-3 row">
+            <label for="category" class="col-4">Category</label>
+            <select class="col-8" id="category" formControlName="category">
+              <option value="jeans-pant">Jeans Pants</option>
+              <option value="jeans-jacket">Jeans Jackets</option>
+              <option value="jeans-shorts">Jeans Shorts</option>
+              <option value="jeans-shirts">Jeans Shirts</option>
+            </select>
+          </div>
+          <div class="mb-3 row">
+            <label for="fitting" class="col-4">Fitting</label>
+            <select class="col-8" id="fitting" formControlName="fitting">
+              <option value="slim">Slim</option>
+              <option value="straight">Straight</option>
+              <option value="skinny">Skinny</option>
+              <option value="ankle">Ankle</option>
+            </select>
+          </div>
+          <div class="mb-3 row">
+            <label for="size-type" class="col-4">Size Type</label>
+            <select class="col-8" id="size-type" formControlName="sizeType">
+              <option value="uk">UK</option>
+              <option value="us">US</option>
+              <option value="eu">EU</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <h5>Quantity breakdown</h5>
+            <div class="row">
+              <div class="col-4">Size</div>
+              <div class="col-8">Quantity</div>
+              <div class="mb-2" *ngFor="let size of sizes">
+                <label for="{{size}}" class="col-4">{{size}}</label>
+                <input type="text">
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="shipping-address" class="col-4">Shipping Address</label>
+            <textarea rows="5" formControlName="shippingAddress"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-3"></div>
+    </div>
+  </div>
+  <app-keywords></app-keywords>
+  <div class="push"></div>
+</div>
+<app-footer></app-footer>

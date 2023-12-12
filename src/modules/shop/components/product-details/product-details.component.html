@@ -3,13 +3,54 @@
   <div class="loader" *ngIf="loader"></div>
   <div class="mb-5 product-details">
     <div class="row" *ngFor="let product of productDetails">
-      <h1>{{product.articleNo + '-' + product.dept + product.fitting + product.color + product.category + product.fitting }}</h1>
+      <h1>
+        <span class="text-capitalize">{{product.dept}} </span>
+        <span class="text-capitalize">{{product.fitting}} </span>
+        <span class="text-capitalize">{{product.color}} </span>
+        <span class="text-capitalize">{{product.category | removeDash}} </span>
+        <span>PK-{{product.articleNo}} </span> 
+      </h1>
       <hr />
       <div class="col-lg-6 mb-5">
-        <ngb-carousel *ngIf="imageObject">
-          <ng-template *ngFor="let image of imageObject" ngbSlide>
+        <ngb-carousel>
+          <ng-template ngbSlide>
             <div class="img-slider-wrapper">
-              <img [src]="image.path" alt="{{image.alt}}" />
+              <img 
+                src="{{PRODUCT_IMAGES_BASE_URL+product.dept+'/'+product.category+'/'+product.articleNo+'/'+'front-img.jpg'}}" 
+                alt="{{product.dept+' '+product.category+' '+product.articleNo+' '+'other three image'}}" 
+              />
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <div class="img-slider-wrapper">
+              <img 
+                src="{{PRODUCT_IMAGES_BASE_URL+product.dept+'/'+product.category+'/'+product.articleNo+'/'+'back-img.jpg'}}" 
+                alt="{{product.dept+' '+product.category+' '+product.articleNo+' '+'back image'}}" 
+              />
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <div class="img-slider-wrapper">
+              <img 
+                src="{{PRODUCT_IMAGES_BASE_URL+product.dept+'/'+product.category+'/'+product.articleNo+'/'+'other-one.jpg'}}" 
+                alt="{{product.dept+' '+product.category+' '+product.articleNo+' '+'other two image'}}" 
+              />
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <div class="img-slider-wrapper">
+              <img 
+                src="{{PRODUCT_IMAGES_BASE_URL+product.dept+'/'+product.category+'/'+product.articleNo+'/'+'other-two.jpg'}}" 
+                alt="{{product.dept+' '+product.category+' '+product.articleNo+' '+'other one image'}}" 
+              />
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <div class="img-slider-wrapper">
+              <img 
+                src="{{PRODUCT_IMAGES_BASE_URL+product.dept+'/'+product.category+'/'+product.articleNo+'/'+'other-three.jpg'}}" 
+                alt="{{product.dept+' '+product.category+' '+product.articleNo+' '+'other two image'}}" 
+              />
             </div>
           </ng-template>
         </ngb-carousel>
@@ -62,7 +103,11 @@
           </li>
         </ul>
         <div class="col-12 text-end">
-          <button type="button" class="btn btn-primary">Order Now</button>
+          <a 
+            routerLink="/order-now" 
+            [queryParams]="{dept: product.dept, category: product.category, articleNo: product.articleNo, sizes: product.sizes}" 
+            class="btn btn-primary">Order Now
+          </a>
         </div>
       </div>
     </div>

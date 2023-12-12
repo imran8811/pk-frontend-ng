@@ -13,5 +13,6 @@ export interface IProduct {
   type : string,
   length : string,
   slug : string,
-  product_images : IProductImages[]
+  product_images : IProductImages[],
+  data: string[]
 }

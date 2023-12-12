@@ -1,6 +1,19 @@
 .product-filters {
+  li { 
+    padding: 5px 0;
+    input[type=checkbox]{
+      margin: 0 10px 0 0;
+    }
+  }
+  li.active {
+    background-color: #2d639e;
+    color: #fff;
+    border-radius: 3px;
+  }
+  & li.active {
+    a { color: #fff; }
+  } 
   label {
     display: block;
-    margin: 0 0 5px;
   }
 }

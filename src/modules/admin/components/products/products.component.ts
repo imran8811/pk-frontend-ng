@@ -4,7 +4,7 @@ import { IProduct } from 'src/models/product.model';
 import { ProductService, GlobalService  } from 'src/services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GLOBAL_CONSTANTS } from 'src/constants/global.constants';
-import { basePath } from 'src/endpoints'
+import { BASE_URL } from 'src/app-routes'
 
 @Component({
   selector: 'app-products',
@@ -14,7 +14,7 @@ import { basePath } from 'src/endpoints'
 
 export class AdminProductsComponent implements OnInit {
   products: IProduct[];
-  BASE_PATH = basePath;
+  BASE_URL = BASE_URL;
 
   constructor(private globalService: GlobalService, private productService: ProductService) { }
 
@@ -23,13 +23,15 @@ export class AdminProductsComponent implements OnInit {
   }
 
   getProductByDeptCategory = () => {
-    this.products = this.productService.getProductByDeptCategory(GLOBAL_CONSTANTS.DEFAULT_DEPT, GLOBAL_CONSTANTS.DEFAULt_CATEGORY);
+    this.productService.getProductByDeptCategory(GLOBAL_CONSTANTS.DEFAULT_DEPT, GLOBAL_CONSTANTS.DEFAULt_CATEGORY).subscribe(res => {
+      this.products = res;
+    })
   }
 
-  deleteProduct = (article_no) => {
+  deleteProduct = (dept, category, articleNo) => {
     const confirmation = window.confirm('Are you sure?');
     if(confirmation) {
-      this.productService.deleteProduct(article_no).subscribe(res => {
+      this.productService.deleteProduct(dept, category, articleNo).subscribe(res => {
         if(res.type === 'success'){
           this.globalService.reloadCurrentRoute();      
         }

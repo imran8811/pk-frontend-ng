@@ -8,6 +8,7 @@ import {
   FactoryComponent,
   CertificationsComponent,
   BlogComponent,
+  OrderNowComponent
 } from './components';
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'factory', component: FactoryComponent},
   { path: 'certifications', component: CertificationsComponent},
   { path: 'blog', component: BlogComponent},
+  { path: 'order-now', component: OrderNowComponent},
 ];
 
 @NgModule({

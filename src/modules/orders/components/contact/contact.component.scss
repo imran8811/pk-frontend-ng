@@ -1,0 +1,23 @@
+.contact-wrap {
+	box-shadow: 0px 0px 10px #999;
+	-moz-box-shadow: 0px 0px 10px #999;
+	-webkit-box-shadow: 0px 0px 10px #999;
+	border-radius: 10px;
+}
+.contact-wrap .sidebar {
+	display: inline-block;
+	vertical-align: top;
+	width: 48%;
+	padding: 20px 0 0 50px;
+}
+.contact-wrap .sidebar ul li {
+  margin: 0 0 30px;
+}
+.contact-wrap ul li span {
+  float: left;
+  width: 60%;
+}
+.contact-wrap ul li span:first-child {width: 37%;}
+.map-outer {
+  height: 600px;
+}
